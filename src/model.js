@@ -3293,7 +3293,7 @@ class Model {
     // Run after hook
     if (options.hooks) {
       options.attributes = values;
-      await this.runHooks('afterBulkUpdate', options);
+      await this.runHooks('afterBulkUpdate', _.isNumber(result[0]) ? result[1] : result[0], options);
       delete options.attributes;
     }
     return result;
